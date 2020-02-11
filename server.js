@@ -1,6 +1,7 @@
 //import modules.
 const express = require('express');
 const path = require('path');
+// const bodyParser = require('body-parser');
 
 //initiate global variables.
 const log = console.log;
@@ -11,15 +12,19 @@ const PORT = 3000;
 app.use('/public', express.static(path.join(__dirname, 'public')))
 
 //Data Parsing
+// app.use(bodyParser.urlencoded({
+//     extended: false,
+// }))
+// app.use(bodyParser.json());
+
 app.use(express.urlencoded({
-    extended: false,
-    type: 'mixed'
-}))
+    extended: false
+}));
 app.use(express.json());
 
 app.post('/email', (req, res) => {
     //send email here
-    console.log('Data', req);
+    console.log('Data', req.body);
     res.json({message: 'Message received!!!!!'});
 });
 
