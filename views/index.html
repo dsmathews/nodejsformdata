@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+</head>
+
+<body>
+
+    <form>
+        <label for="firstName">First Name: </label>
+        <input type="text" name="firstName" id="firstName" pattern="[A-Za-z]{2,15}" required />
+
+        <label for="lastName">Last Name: </label>
+        <input type="text" name="lastName" id="lastName" pattern="[A-Za-z]{2,15}" required />
+
+        <label for="suffix">Suffix: </label>
+        <input type="text" name="suffix" id="suffix" maxlength="5" />
+        <br />
+        <br />
+        <p>Personal information such as Phone Number and Email will not be shared.</p>
+        <label for="phone">Phone Number: </label>
+        <input type="tel" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+        <label for="email">Email: </label>
+        <input type="email" name="email" id="email" pattern="[A-Za-z0-9.]*@[A-Za-z0-9]*.[a-z]{3,5}" required />
+        <br />
+        <br />
+        <label for="gradYear">Graduation Year: </label>
+        <input type="text" name="gradYear" id="gradYear" pattern="[0-9]{1,4}" maxlength="4" required />
+
+        <label for="degreeConcetration">MGA Degree Concentration: </label>
+        <input type="text" name="degreeConcentration" id="degreeConcentration" maxlength="40" required />
+        <br />
+        <br />
+        <label for="jobTitle">Current Job Title: </label>
+        <input type="text" name="jobTitle" id="jobTitle" required />
+        <label for="employer">Employer: </label>
+        <input type="text" name="employer" id="employer" required />
+        <br />
+        <br />
+        <label for="photo">Please upload a recent photo</label>
+        <input type="file" name="photo" id="photo" required />
+        <br />
+        <br />
+        <label for="jobDescription">Job Description: (255 Character Max.)</label>
+        <br />
+        <textarea id="jobDescription" name="jobDescription" cols="60" rows="15" maxlength="255" required></textarea>
+        <br />
+        <br />
+        <label for="whatFromMGA">What did MGA do to help make you successful? (255 Character Max.)</label>
+        <br />
+        <textarea id="whatFromMGA" name="receivedFromMGA" cols="60" rows="15" maxlength="255" required></textarea>
+        <br />
+        <br />
+        <label for="biography">Please provide a short biography (255 Character Max.)</label>
+        <br />
+        <textarea id="biography" name="biography" cols="60" rows="15" maxlength="255" required></textarea>
+        <br />
+        <br />
+        <input type="checkbox" name="agreement" id="agreement" required /><label for="checkbox">By submitting, I agree
+            that my image and
+            information can be used by Middle Georgia State University(MGA), MGA School of Computing - Department of
+            Information Technology, and
+            MGA Marketing.</label>
+        <br />
+        <button type="submit" id="submit">Submit</button>
+        <button type="reset">Reset</button>
+        <br />
+        <br />
+    </form>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="/public/formFunctions.js"></script> -->
+    <script>
+        // const delimitor = $("#agreement");
+        // const subB = $('#submit');
+
+        // function changer() {
+        //     if (delimitor.prop('checked') == true) {
+        //         subB.prop('disabled', false);
+        //         updateAcceptance();
+        //     } else if (delimitor.prop('checked') == false) {
+        //         subB.prop('disabled', true)
+        //     }
+        // };
+
+        // changer();
+
+        $('form').on('submit', e => {
+            e.preventDefault();
+
+            const fName = $('#firstName')
+                .val()
+                .trim();
+            const lName = $('#lastName')
+                .val()
+                .trim();
+            const suffix = $('#suffix')
+                .val()
+                .trim();
+            const phone = $('#phone')
+                .val()
+                .trim();
+            const email = $('#email')
+                .val()
+                .trim();
+            const gradYear = $('#gradYear')
+                .val()
+                .trim();
+            const concentration = $('#degreeConcentration')
+                .val()
+                .trim();
+
+            const jobTitle = $('#jobTitle')
+                .val()
+                .trim();
+
+            const employer = $('#employer')
+                .val()
+                .trim();
+
+            const photo = $('#photo')
+                .val()
+                .trim();
+
+            const jobDescription = $('#jobDescription')
+                .val()
+                .trim();
+
+            const whatFromMGA = $('#whatFromMGA')
+                .val()
+                .trim();
+
+            const bio = $('#biography')
+                .val()
+                .trim();
+
+            const data = {
+                fName,
+                lName,
+                suffix,
+                phone,
+                email,
+                gradYear,
+                concentration,
+                jobTitle,
+                employer,
+                photo,
+                jobDescription,
+                whatFromMGA,
+                bio
+            }
+
+            $.post('/email', data, () => {
+                console.log("message sent to server");
+                console.log(data);
+                console.log(photo);
+            })
+
+
+
+
+        })
+
+    </script>
+</body>
+
+</html>

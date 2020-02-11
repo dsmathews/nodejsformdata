@@ -1,0 +1,30 @@
+{
+  "name": "nodejsformdata",
+  "version": "1.0.0",
+  "description": "Alumni contact form for MGA Department of Information Technology/School of Computing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsmathews/nodejsformdata.git"
+  },
+  "keywords": [
+    "node",
+    "form"
+  ],
+  "author": "Scott Mathews",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dsmathews/nodejsformdata/issues"
+  },
+  "homepage": "https://github.com/dsmathews/nodejsformdata#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemailer": "^6.4.2",
+    "nodemailer-mailgun-transport": "^2.0.0",
+    "nodemon": "^2.0.2"
+  }
+}
