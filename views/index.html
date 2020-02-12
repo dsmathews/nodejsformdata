@@ -22,7 +22,7 @@
         <br />
         <br />
         <p>Personal information such as Phone Number and Email will not be shared.</p>
-        <label for="phone">Phone Number: </label>
+        <label for="phone">Phone Number: (ex. 555-555-5555) </label>
         <input type="tel" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
         <label for="email">Email: </label>
         <input type="email" name="email" id="email" pattern="[A-Za-z0-9.]*@[A-Za-z0-9]*.[a-z]{3,5}" required />
@@ -42,7 +42,7 @@
         <br />
         <br />
         <label for="photo">Please upload a recent photo</label>
-        <input type="file" name="photo" id="photo" required />
+        <input type="file" name="photo" id="photo" accept="image/*" required />
         <br />
         <br />
         <label for="jobDescription">Job Description: (255 Character Max.)</label>
@@ -123,9 +123,7 @@
                 .val()
                 .trim();
 
-            const photo = $('#photo')
-                .val()
-                .trim();
+            const photo = $('#photo').val();
 
             const jobDescription = $('#jobDescription')
                 .val()

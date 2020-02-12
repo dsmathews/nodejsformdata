@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport(mailGun(auth));
 
 const sendMail = (fName, lName, suffix, phone, email, gradYear, concentration, jobTitle, employer, photo, jobDescription, whatFromMGA, bio, cb) => {
     
-    const filepath = path.join(__dirname, photo);
+    const filename = photo.files[0].name;
 
     const mailOptions = {
         from: email,
@@ -41,7 +41,7 @@ const sendMail = (fName, lName, suffix, phone, email, gradYear, concentration, j
         <br />
         <h4><b>Biography</b></h4>
         <p>${bio}</p>`,
-        attachment: filepath
+        // attachment: [{filename: filename, path: }]
     }
     
     transporter.sendMail(mailOptions, function(err, data) {
