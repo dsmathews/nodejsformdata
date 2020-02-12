@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport(mailGun(auth));
 
 const sendMail = (fName, lName, suffix, phone, email, gradYear, concentration, jobTitle, employer, photo, jobDescription, whatFromMGA, bio, cb) => {
     
-    const filename = photo.files[0].name;
+    // const filename = photo.files[0].name;
 
     const mailOptions = {
         from: email,

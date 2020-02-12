@@ -26,7 +26,6 @@ app.use(express.json());
 app.post('/email', (req, res) => {
     //send email here
     const {fName, lName, suffix, phone, email, gradYear, concentration, jobTitle, employer, photo, jobDescription, whatFromMGA, bio} = req.body;
-    console.log(req.body)
     sendMail(fName, lName, suffix, phone, email, gradYear, concentration, jobTitle, employer, photo, jobDescription, whatFromMGA, bio, function(err, data){
         if (err) {
             res.status(500).json({message: err})
@@ -35,7 +34,7 @@ app.post('/email', (req, res) => {
             res.json({message: 'Email sent!!!!!!'})
         }
     });
-    res.json({message: 'Message received!!!!!'});
+    // res.json({message: 'Message received!!!!!'});
 });
 
 //create route to get file.
